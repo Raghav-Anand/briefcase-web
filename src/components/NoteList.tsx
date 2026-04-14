@@ -154,7 +154,7 @@ export function NoteList({ projectId }: NoteListProps) {
                 <StatusBadge status={note.note_type} />
                 <span className="text-slate-500 text-xs">{formatDate(note.created_at)}</span>
               </div>
-              <div className="prose prose-sm prose-dark max-w-none text-slate-300">
+              <div className="prose prose-sm prose-invert prose-dark max-w-none text-slate-300">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{note.content}</ReactMarkdown>
               </div>
             </div>

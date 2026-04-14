@@ -91,7 +91,7 @@ export function DocsViewer() {
         <MermaidRenderer source={doc.content} className="max-w-4xl" />
       ) : (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 max-w-3xl">
-          <article className="prose prose-sm prose-dark max-w-none">
+          <article className="prose prose-sm prose-invert prose-dark max-w-none">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{doc.content}</ReactMarkdown>
           </article>
         </div>

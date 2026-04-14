@@ -12,7 +12,7 @@ export function Privacy() {
           <p className="text-slate-500 text-sm">Effective date: {EFFECTIVE_DATE}</p>
         </div>
 
-        <div className="prose prose-sm prose-dark max-w-none space-y-6 text-slate-300">
+        <div className="prose prose-sm prose-invert prose-dark max-w-none space-y-6 text-slate-300">
           <Section title="1. What we collect">
             <p>When you sign in with Google, we receive your Google account email address, display name,
             and profile photo URL. We store these to identify your account.</p>

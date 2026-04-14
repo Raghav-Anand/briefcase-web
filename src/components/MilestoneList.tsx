@@ -216,7 +216,7 @@ export function MilestoneList({ projectId }: MilestoneListProps) {
           </div>
 
           {/* Markdown content */}
-          <div className="prose prose-sm prose-invert max-w-none">
+          <div className="prose prose-sm prose-invert prose-dark max-w-none">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{milestoneMarkdown(selected)}</ReactMarkdown>
           </div>
         </div>

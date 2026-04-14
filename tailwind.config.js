@@ -23,6 +23,16 @@ export default {
           950: '#1e1b4b',
         },
       },
+      // Remove the auto-inserted backtick characters @tailwindcss/typography
+      // injects around inline <code> via ::before / ::after pseudo-elements.
+      typography: {
+        DEFAULT: {
+          css: {
+            'code::before': { content: 'none' },
+            'code::after':  { content: 'none' },
+          },
+        },
+      },
       // ─────────────────────────────────────────────────────────────────────────
     },
   },
