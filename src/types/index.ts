@@ -153,3 +153,31 @@ export interface NotesResponse {
 export interface DocsResponse {
   docs: RepoDoc[];
 }
+
+export interface Repo {
+  id: string;
+  name: string;
+  url: string;
+  description?: string;
+  language?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CreateRepoInput {
+  name: string;
+  url: string;
+  description?: string;
+  language?: string;
+}
+
+export interface UpdateRepoInput {
+  name?: string;
+  url?: string;
+  description?: string;
+  language?: string;
+}
+
+export interface ReposResponse {
+  repos: Repo[];
+}

@@ -6,13 +6,14 @@ import { SessionTimeline } from '../components/SessionTimeline';
 import { MilestoneList } from '../components/MilestoneList';
 import { DecisionLog } from '../components/DecisionLog';
 import { NoteList } from '../components/NoteList';
+import { RepoList } from '../components/RepoList';
 import { EmptyState } from '../components/EmptyState';
 import { useProject } from '../hooks/useProject';
 import { useSessions } from '../hooks/useSessions';
 import { api } from '../api/client';
 import type { RepoDoc, DocsResponse } from '../types';
 
-type Tab = 'overview' | 'sessions' | 'milestones' | 'decisions' | 'notes' | 'docs';
+type Tab = 'overview' | 'sessions' | 'milestones' | 'decisions' | 'notes' | 'docs' | 'repos';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'overview',   label: 'Overview' },
@@ -21,6 +22,7 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'decisions',  label: 'Decisions' },
   { id: 'notes',      label: 'Notes' },
   { id: 'docs',       label: 'Docs' },
+  { id: 'repos',      label: 'Repos' },
 ];
 
 function formatDate(iso: string): string {
@@ -252,6 +254,7 @@ export function ProjectDetail() {
         {activeTab === 'decisions'   && <DecisionLog  projectId={id!} />}
         {activeTab === 'notes'       && <NoteList     projectId={id!} />}
         {activeTab === 'docs'        && <DocsList     projectId={id!} />}
+        {activeTab === 'repos'       && <RepoList     projectId={id!} />}
       </div>
     </Layout>
   );
