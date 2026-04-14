@@ -4,12 +4,6 @@ import { api, setAuthToken } from '../api/client';
 import type { User } from '../types';
 
 const CLIENT_ID = (import.meta.env.VITE_OAUTH_CLIENT_ID as string | undefined) ?? '';
-
-declare global {
-  interface Window {
-    google?: { accounts: { id: { prompt: () => void } } };
-  }
-}
 const TOKEN_STORAGE_KEY = 'briefcase_id_token';
 
 interface JwtPayload {
