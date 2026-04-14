@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar — thin, dark-themed */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #334155; /* slate-700 */
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569; /* slate-600 */
+  }
+
+  /* Prose overrides for react-markdown in dark mode */
+  .prose-dark {
+    --tw-prose-body: #cbd5e1;        /* slate-300 */
+    --tw-prose-headings: #f1f5f9;    /* slate-100 */
+    --tw-prose-links: #818cf8;       /* indigo-400 */
+    --tw-prose-bold: #f1f5f9;
+    --tw-prose-counters: #94a3b8;    /* slate-400 */
+    --tw-prose-bullets: #475569;     /* slate-600 */
+    --tw-prose-hr: #334155;          /* slate-700 */
+    --tw-prose-quotes: #94a3b8;
+    --tw-prose-quote-borders: #4338ca; /* indigo-700 */
+    --tw-prose-captions: #94a3b8;
+    --tw-prose-code: #a5b4fc;        /* indigo-300 */
+    --tw-prose-pre-code: #e2e8f0;
+    --tw-prose-pre-bg: #0f172a;      /* slate-900 */
+    --tw-prose-th-borders: #334155;
+    --tw-prose-td-borders: #1e293b;
+  }
+}
+
+@layer utilities {
+  /* Fade in animation for page transitions */
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
