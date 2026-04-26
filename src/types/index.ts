@@ -55,13 +55,23 @@ export interface Session {
 
 export type MilestoneStatus = 'open' | 'completed';
 
+export interface MilestoneTask {
+  id: string;
+  title: string;
+  repo_name?: string;
+  completed: boolean;
+  completed_at?: string;
+}
+
 export interface Milestone {
   id: string;
+  seq: number;
   title: string;
   description?: string;
   due_date?: string;
   completed_at?: string;
   status: MilestoneStatus;
+  tasks?: MilestoneTask[];
   session_id?: string;
   created_at: string;
 }
@@ -70,6 +80,10 @@ export interface CreateMilestoneInput {
   title: string;
   description?: string;
   due_date?: string;
+}
+
+export interface AddTaskResponse {
+  task_id: string;
 }
 
 export interface Decision {
