@@ -4,7 +4,7 @@ import { Layout } from '../components/Layout';
 import { StatusBadge } from '../components/StatusBadge';
 import { EmptyState } from '../components/EmptyState';
 import { api } from '../api/client';
-import type { SessionDetail as ISessionDetail } from '../types';
+import type { SessionDetail as ISessionDetail, SessionDetailResponse } from '../types';
 
 function formatDate(iso: string): string {
   return new Intl.DateTimeFormat('en-US', {
@@ -39,8 +39,8 @@ export function SessionDetail() {
 
   useEffect(() => {
     setLoading(true);
-    api.get<ISessionDetail>(`/api/projects/${projectId}/sessions/${sid}`)
-      .then((res) => setSession(res))
+    api.get<SessionDetailResponse>(`/api/projects/${projectId}/sessions/${sid}`)
+      .then((res) => setSession({ ...res.session, tool_call_log: res.tool_call_log }))
       .catch((e) => setError(e instanceof Error ? e.message : 'Failed to load'))
       .finally(() => setLoading(false));
   }, [projectId, sid]);

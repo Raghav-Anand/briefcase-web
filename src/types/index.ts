@@ -134,6 +134,11 @@ export interface SessionDetail extends Session {
   tool_call_log?: ToolCallLog[];
 }
 
+export interface SessionDetailResponse {
+  session: Session;
+  tool_call_log?: ToolCallLog[];
+}
+
 // Paginated list wrapper
 export interface Paginated<T> {
   items: T[];
