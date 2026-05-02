@@ -78,6 +78,9 @@ function DocsList({ projectId }: { projectId: string }) {
               <p className="text-slate-500 text-xs mt-0.5">
                 {TYPE_LABEL[doc.doc_type] ?? doc.doc_type} · v{doc.version} · {formatDate(doc.updated_at)}
               </p>
+              {doc.summary && (
+                <p className="text-slate-500 text-xs mt-1.5 line-clamp-2 leading-relaxed">{doc.summary}</p>
+              )}
             </div>
           </div>
         </Link>

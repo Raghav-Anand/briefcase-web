@@ -114,6 +114,8 @@ export interface RepoDoc {
   doc_type: DocType;
   format: DocFormat;
   content?: string;
+  summary?: string;
+  headings?: string[];
   gcs_path?: string;
   version: number;
   updated_by: string;

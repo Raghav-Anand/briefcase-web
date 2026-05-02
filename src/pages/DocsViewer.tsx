@@ -82,6 +82,25 @@ export function DocsViewer() {
         </div>
       </div>
 
+      {/* Summary */}
+      {doc.summary && (
+        <div className="mb-4 max-w-3xl bg-slate-900 border border-slate-800 rounded-xl px-5 py-3">
+          <p className="text-slate-400 text-sm leading-relaxed">{doc.summary}</p>
+        </div>
+      )}
+
+      {/* Table of contents */}
+      {doc.headings && doc.headings.length > 1 && (
+        <div className="mb-6 max-w-3xl bg-slate-900 border border-slate-800 rounded-xl px-5 py-3">
+          <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Contents</p>
+          <ul className="space-y-1">
+            {doc.headings.map((h, i) => (
+              <li key={i} className="text-slate-400 text-sm truncate">{h}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Content */}
       {!doc.content ? (
         <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 text-amber-400 text-sm max-w-3xl">
