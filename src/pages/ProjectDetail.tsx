@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Layout } from '../components/Layout';
+import { AppLayout } from '../components/AppLayout';
 import { StatusBadge } from '../components/StatusBadge';
 import { SessionTimeline } from '../components/SessionTimeline';
 import { MilestoneList } from '../components/MilestoneList';
@@ -112,31 +112,31 @@ export function ProjectDetail() {
 
   if (loading) {
     return (
-      <Layout>
+      <AppLayout>
         <div className="space-y-4">
           <div className="h-8 w-64 bg-slate-800 rounded-lg animate-pulse" />
           <div className="h-4 w-96 bg-slate-800 rounded animate-pulse" />
           <div className="h-32 bg-slate-900 border border-slate-800 rounded-xl animate-pulse" />
         </div>
-      </Layout>
+      </AppLayout>
     );
   }
 
   if (error || !project) {
     return (
-      <Layout>
+      <AppLayout>
         <EmptyState
           icon="⚠️"
           title="Project not found"
           description={error ?? 'This project does not exist or you do not have access.'}
           action={{ label: '← Back to dashboard', onClick: () => navigate('/dashboard') }}
         />
-      </Layout>
+      </AppLayout>
     );
   }
 
   return (
-    <Layout>
+    <AppLayout>
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6">
         <Link to="/dashboard" className="hover:text-slate-300 transition-colors">Dashboard</Link>
@@ -259,6 +259,6 @@ export function ProjectDetail() {
         {activeTab === 'docs'        && <DocsList     projectId={id!} />}
         {activeTab === 'repos'       && <RepoList     projectId={id!} />}
       </div>
-    </Layout>
+    </AppLayout>
   );
 }

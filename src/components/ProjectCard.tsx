@@ -22,7 +22,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       to={`/projects/${project.id}`}
-      className="group block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-slate-700 hover:bg-slate-800/50 transition-all duration-150"
+      className="group block bg-ink-800 border border-ink-600 rounded-xl p-5 hover:border-ink-500 hover:bg-ink-700 transition-all duration-150"
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-3 mb-3">
@@ -41,7 +41,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       {/* Last session summary */}
       {project.last_session_summary && (
-        <div className="bg-slate-800 rounded-lg p-3 mb-4 border border-slate-700/50">
+        <div className="bg-ink-700 rounded-lg p-3 mb-4 border border-ink-600/50">
           <p className="text-slate-400 text-xs font-medium uppercase tracking-wide mb-1">Last session</p>
           <p className="text-slate-300 text-sm line-clamp-2">{project.last_session_summary}</p>
         </div>
@@ -53,7 +53,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.tech_stack.slice(0, 5).map((tech) => (
             <span
               key={tech}
-              className="px-2 py-0.5 bg-slate-800 border border-slate-700 rounded text-slate-400 text-xs"
+              className="px-2 py-0.5 bg-ink-700 border border-ink-600 rounded text-slate-400 text-xs"
             >
               {tech}
             </span>
@@ -67,7 +67,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       )}
 
       {/* Footer: milestones + last updated */}
-      <div className="flex items-center justify-between text-xs text-slate-500 pt-3 border-t border-slate-800">
+      <div className="flex items-center justify-between text-xs text-slate-500 pt-3 border-t border-ink-600/60">
         <span>
           {project.open_milestone_count > 0
             ? `${project.open_milestone_count} open milestone${project.open_milestone_count !== 1 ? 's' : ''}`

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Layout } from '../components/Layout';
+import { AppLayout } from '../components/AppLayout';
 import { StatusBadge } from '../components/StatusBadge';
 import { EmptyState } from '../components/EmptyState';
 import { api } from '../api/client';
@@ -47,26 +47,26 @@ export function SessionDetail() {
 
   if (loading) {
     return (
-      <Layout>
+      <AppLayout>
         <div className="space-y-4">
           <div className="h-4 w-48 bg-slate-800 rounded animate-pulse" />
           <div className="h-8 w-96 bg-slate-800 rounded-lg animate-pulse" />
           <div className="h-40 bg-slate-900 border border-slate-800 rounded-xl animate-pulse" />
         </div>
-      </Layout>
+      </AppLayout>
     );
   }
 
   if (error || !session) {
     return (
-      <Layout>
+      <AppLayout>
         <EmptyState icon="⚠️" title="Session not found" description={error ?? undefined} />
-      </Layout>
+      </AppLayout>
     );
   }
 
   return (
-    <Layout>
+    <AppLayout>
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6 flex-wrap">
         <Link to="/dashboard" className="hover:text-slate-300 transition-colors">Dashboard</Link>
@@ -188,6 +188,6 @@ export function SessionDetail() {
           </section>
         )}
       </div>
-    </Layout>
+    </AppLayout>
   );
 }

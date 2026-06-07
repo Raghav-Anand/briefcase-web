@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Layout } from '../components/Layout';
+import { AppLayout } from '../components/AppLayout';
 import { MermaidRenderer } from '../components/MermaidRenderer';
 import { EmptyState } from '../components/EmptyState';
 import { api } from '../api/client';
@@ -37,26 +37,26 @@ export function DocsViewer() {
 
   if (loading) {
     return (
-      <Layout>
+      <AppLayout>
         <div className="space-y-4 max-w-3xl">
           <div className="h-4 w-48 bg-slate-800 rounded animate-pulse" />
           <div className="h-8 w-80 bg-slate-800 rounded-lg animate-pulse" />
           <div className="h-96 bg-slate-900 border border-slate-800 rounded-xl animate-pulse" />
         </div>
-      </Layout>
+      </AppLayout>
     );
   }
 
   if (error || !doc) {
     return (
-      <Layout>
+      <AppLayout>
         <EmptyState icon="⚠️" title="Document not found" description={error ?? undefined} />
-      </Layout>
+      </AppLayout>
     );
   }
 
   return (
-    <Layout>
+    <AppLayout>
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6 flex-wrap">
         <Link to="/dashboard" className="hover:text-slate-300 transition-colors">Dashboard</Link>
@@ -115,6 +115,6 @@ export function DocsViewer() {
           </article>
         </div>
       )}
-    </Layout>
+    </AppLayout>
   );
 }

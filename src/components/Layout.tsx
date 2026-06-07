@@ -1,30 +1,20 @@
-import { useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/useAuth';
 
-const LOGO_URL = 'https://storage.googleapis.com/briefcase-planner-static/logo.png';
-
 function NavLogo() {
-  const [imgFailed, setImgFailed] = useState(false);
-
   return (
-    <span className="flex items-center gap-3">
-      {/* Icon slot: logo image when it loads, SVG fallback if it doesn't */}
-      {imgFailed ? (
-        <svg className="w-6 h-6 text-brand-500 shrink-0" viewBox="0 0 32 32" fill="currentColor">
-          <rect x="4" y="12" width="24" height="16" rx="3" />
-          <path d="M11 12V9a5 5 0 0 1 10 0v3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-        </svg>
-      ) : (
-        <img
-          src={LOGO_URL}
-          alt=""
-          className="h-9 w-auto"
-          onError={() => setImgFailed(true)}
-        />
-      )}
-      {/* Wordmark: always visible regardless of image state */}
-      <span className="font-semibold text-slate-100 text-base tracking-tight">Briefcase</span>
+    <span className="flex items-center gap-2.5">
+      <svg className="w-7 h-7 shrink-0" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        {/* Briefcase body */}
+        <rect x="2" y="11" width="28" height="18.5" rx="3.5" stroke="#d4c4a8" strokeWidth="1.75" />
+        {/* Handle */}
+        <path d="M12 11V8.5a4 4 0 0 1 8 0V11" stroke="#d4c4a8" strokeWidth="1.75" strokeLinecap="round" />
+        {/* Terminal > */}
+        <path d="M8 19.5L12.5 22L8 24.5" stroke="#f09c35" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Terminal _ */}
+        <line x1="15" y1="24.5" x2="23.5" y2="24.5" stroke="#f09c35" strokeWidth="1.75" strokeLinecap="round" />
+      </svg>
+      <span className="font-semibold text-slate-100 tracking-tight text-base">Briefcase</span>
     </span>
   );
 }
@@ -41,9 +31,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col">
+    <div className="min-h-screen bg-ink-900 flex flex-col">
       {/* Nav — full viewport width, no max-w constraint */}
-      <header className="sticky top-0 z-40 bg-slate-950/90 backdrop-blur border-b border-slate-800/80">
+      <header className="sticky top-0 z-40 bg-ink-900/90 backdrop-blur border-b border-slate-800/80">
         <div className="px-6 sm:px-10 h-16 flex items-center justify-between">
 
           {/* Left: brand */}
@@ -54,31 +44,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
           {/* Right: nav links + auth — grouped so the middle is intentionally empty */}
           <div className="flex items-center gap-1">
             {user && (
-              <NavLink
-                to="/dashboard"
-                className={({ isActive }) =>
-                  `px-4 py-2 rounded-lg text-base transition-colors ${
-                    isActive
-                      ? 'text-slate-100 bg-slate-800'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-                  }`
-                }
-              >
-                Dashboard
-              </NavLink>
+              <>
+                <NavLink
+                  to="/dashboard"
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-lg text-base transition-colors ${
+                      isActive
+                        ? 'text-slate-100 bg-slate-800'
+                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                    }`
+                  }
+                >
+                  Dashboard
+                </NavLink>
+                <NavLink
+                  to="/setup"
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-lg text-base transition-colors ${
+                      isActive
+                        ? 'text-slate-100 bg-slate-800'
+                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                    }`
+                  }
+                >
+                  Setup
+                </NavLink>
+              </>
             )}
-            <NavLink
-              to="/setup"
-              className={({ isActive }) =>
-                `px-4 py-2 rounded-lg text-base transition-colors ${
-                  isActive
-                    ? 'text-slate-100 bg-slate-800'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-                }`
-              }
-            >
-              Setup
-            </NavLink>
 
             {/* Only show Sign in when not already on the landing page */}
             {!user && !onLanding && (
@@ -147,7 +139,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex gap-4">
             <Link to="/privacy" className="hover:text-slate-400 transition-colors">Privacy</Link>
             <Link to="/terms" className="hover:text-slate-400 transition-colors">Terms</Link>
-            <Link to="/setup" className="hover:text-slate-400 transition-colors">MCP Setup</Link>
           </div>
         </div>
       </footer>

@@ -17,11 +17,11 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #334155; /* slate-700 */
+    background: #352c21; /* ink-700 warm */
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #475569; /* slate-600 */
+    background: #4a3f30; /* ink-600 warm */
   }
 
   /* Prose overrides for react-markdown in dark mode */
